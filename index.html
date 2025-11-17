@@ -410,15 +410,16 @@
                     </div>
                     <div>
                         <h3 class="text-xl font-semibold text-primary mb-4">Send Me a Message</h3>
-                        <form id="contact-form" class="space-y-4">
+                        <!-- Updated Form with Formspree -->
+                        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-4">
                             <div>
-                                <input type="text" placeholder="Your Name" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white" required>
+                                <input type="text" name="name" placeholder="Your Name" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white" required>
                             </div>
                             <div>
-                                <input type="email" placeholder="Your Email" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white" required>
+                                <input type="email" name="email" placeholder="Your Email" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white" required>
                             </div>
                             <div>
-                                <textarea placeholder="Your Message" rows="4" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white" required></textarea>
+                                <textarea name="message" placeholder="Your Message" rows="4" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white" required></textarea>
                             </div>
                             <button type="submit" class="bg-primary hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition">Send Message</button>
                         </form>
@@ -541,25 +542,6 @@
         const skillsSection = document.getElementById('skills');
         if (skillsSection) {
             skillObserver.observe(skillsSection);
-        }
-        
-        // Contact form submission
-        const contactForm = document.getElementById('contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                // Get form data
-                const formData = new FormData(contactForm);
-                const name = formData.get('name') || contactForm.querySelector('input[type="text"]').value;
-                const email = formData.get('email') || contactForm.querySelector('input[type="email"]').value;
-                const message = formData.get('message') || contactForm.querySelector('textarea').value;
-                
-                // In a real application, you would send this data to a server
-                // For now, we'll just show an alert
-                alert(`Thank you for your message, ${name}! I'll get back to you soon.`);
-                contactForm.reset();
-            });
         }
     </script>
 </body>
